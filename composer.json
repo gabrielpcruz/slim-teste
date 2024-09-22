@@ -1,0 +1,14 @@
+{
+    "require": {
+        "gabrielpcruz/slim-framework": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "SlimFramework\\": "framework/src"
+        },
+        "files": [
+            "framework/helper/slim.php"
+        ]
+    }
+}
