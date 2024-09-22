@@ -349,12 +349,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/gabrielpcruz/slim-framework.git",
-                "reference": "063c2bf42602b7ea4f50c4332629a5f0cba4e7bb"
+                "reference": "a645d8e091a7ee94c224186bb002226c43a3cf72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gabrielpcruz/slim-framework/zipball/063c2bf42602b7ea4f50c4332629a5f0cba4e7bb",
-                "reference": "063c2bf42602b7ea4f50c4332629a5f0cba4e7bb",
+                "url": "https://api.github.com/repos/gabrielpcruz/slim-framework/zipball/a645d8e091a7ee94c224186bb002226c43a3cf72",
+                "reference": "a645d8e091a7ee94c224186bb002226c43a3cf72",
                 "shasum": ""
             },
             "require": {
@@ -378,6 +378,9 @@
                 "twig/intl-extra": "^3.7"
             },
             "default-branch": true,
+            "bin": [
+                "bin/slim"
+            ],
             "type": "library",
             "autoload": {
                 "files": [
@@ -401,7 +404,7 @@
                 "issues": "https://github.com/gabrielpcruz/slim-framework/issues",
                 "source": "https://github.com/gabrielpcruz/slim-framework/tree/main"
             },
-            "time": "2024-09-22T14:33:47+00:00"
+            "time": "2024-09-22T20:00:21+00:00"
         },
         {
             "name": "guzzlehttp/psr7",

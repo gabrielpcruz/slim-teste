@@ -13,6 +13,7 @@ return function (App $app) {
 
 
     $app->get('/home', [Home::class, 'index']);
+    $app->get('/logged', [Home::class, 'index']);
 
 
     $app->get('/login', [Login::class, 'index']);

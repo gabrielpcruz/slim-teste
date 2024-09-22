@@ -3,7 +3,7 @@
 return [
     'default' => [
         'driver' => 'mysql',
-        'host' => 'localhost:9901',
+        'host' => '192.168.1.16:9901',
         'database' => 'slim_teste',
         'username' => 'root',
         'password' => 'root',

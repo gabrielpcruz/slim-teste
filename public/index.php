@@ -4,7 +4,7 @@ use SlimFramework\Slim;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = Slim::getApp();
+$app = Slim::bootstrap();
 
 
 $app->run();
