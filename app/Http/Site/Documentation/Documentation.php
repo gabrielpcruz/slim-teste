@@ -2,20 +2,20 @@
 
 namespace App\Http\Site\Documentation;
 
-use App\App;
 use DI\DependencyException;
 use DI\NotFoundException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Slim\Http\Site\SiteController;
+use SlimFramework\Http\Site\SiteAbstractController;
+use SlimFramework\Slim;
 use Symfony\Component\Yaml\Yaml;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class Documentation extends SiteController
+class Documentation extends SiteAbstractController
 {
     /**
      * @param Request $request
@@ -31,7 +31,7 @@ class Documentation extends SiteController
      */
     public function index(Request $request, Response $response): Response
     {
-        $apiPath = App::getInstace()->getContainer()->get('settings')->get('view.path');
+        $apiPath = Slim::container()->get('settings')->get('view.path');
         $yamlFile = $apiPath . '/api/documentation.yaml';
 
         return $this->view(

@@ -2,40 +2,48 @@
 
 namespace App\Http\Api\Auth;
 
-use App\Service\Token\AccessToken;
-use DI\DependencyException;
-use DI\NotFoundException;
+
 use Exception;
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Slim\Http\Api\ApiController;
+use SlimFramework\Http\Api\ApiAbstractController;
+use SlimFramework\Service\Token\AccessToken;
 
-class Token extends ApiController
+class Token extends ApiAbstractController
 {
+    /**
+     * @var \League\OAuth2\Server\AuthorizationServer
+     */
+    private AuthorizationServer $authorizationServer;
+
+    /**
+     * @var \SlimFramework\Service\Token\AccessToken
+     */
+    private AccessToken $accessToken;
+
+    /**
+     * @param \League\OAuth2\Server\AuthorizationServer $authorizationServer
+     * @param \SlimFramework\Service\Token\AccessToken $accessToken
+     */
+    public function __construct(AuthorizationServer $authorizationServer, AccessToken $accessToken)
+    {
+        $this->authorizationServer = $authorizationServer;
+        $this->accessToken = $accessToken;
+    }
+
     /**
      * @param Request $request
      * @param Response $response
      * @return Response
-     * @throws ContainerExceptionInterface
-     * @throws DependencyException
-     * @throws NotFoundException
-     * @throws NotFoundExceptionInterface
+     * @throws \ReflectionException
      */
     public function create(Request $request, Response $response): Response
     {
-        /** @var AuthorizationServer $authorizationServer */
-        $authorizationServer = $this->container->get(AuthorizationServer::class);
-
-        /** @var AccessToken $accessTokenService */
-        $accessTokenService = $this->container->get(AccessToken::class);
-
         $data = $request->getParsedBody();
 
-        $client = $accessTokenService->getClientByGrant($data);
+        $client = $this->accessToken->getClientByGrant($data);
 
         $payload = [];
         $payload['grant_type'] = $data['grant_type'];
@@ -53,7 +61,7 @@ class Token extends ApiController
         $request = $request->withParsedBody($payload);
 
         try {
-            return $authorizationServer->respondToAccessTokenRequest($request, $response);
+            return $this->authorizationServer->respondToAccessTokenRequest($request, $response);
         } catch (OAuthServerException $exception) {
             return $exception->generateHttpResponse($response);
         } catch (Exception $exception) {

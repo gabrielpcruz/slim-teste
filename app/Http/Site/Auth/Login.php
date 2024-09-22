@@ -3,8 +3,7 @@
 namespace App\Http\Site\Auth;
 
 
-use DI\DependencyException;
-use DI\NotFoundException;
+
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -40,9 +39,9 @@ class Login extends SiteAbstractController
      * @param Response $response
      * @return Response
      * @throws ContainerExceptionInterface
-     * @throws DependencyException
-     * @throws NotFoundException
      * @throws NotFoundExceptionInterface
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
     public function login(Request $request, Response $response): Response
     {
