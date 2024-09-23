@@ -2,8 +2,6 @@
 
 namespace App\Http\Site\Auth;
 
-
-
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -12,9 +10,6 @@ use SlimFramework\Entity\User\UserEntity;
 use SlimFramework\Http\Site\SiteAbstractController;
 use SlimFramework\Repository\User\UserRepository;
 use SlimFramework\Session\Session;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
 class Login extends SiteAbstractController
 {
@@ -22,9 +17,8 @@ class Login extends SiteAbstractController
      * @param Request $request
      * @param Response $response
      * @return Response
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function index(Request $request, Response $response): Response
     {
@@ -66,8 +60,8 @@ class Login extends SiteAbstractController
      * @param Request $request
      * @param Response $response
      * @return Response
-     * @throws DependencyException
-     * @throws NotFoundException
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
      */
     public function logout(Request $request, Response $response): Response
     {

@@ -31,7 +31,7 @@ class Documentation extends SiteAbstractController
      */
     public function index(Request $request, Response $response): Response
     {
-        $apiPath = Slim::container()->get('settings')->get('view.path');
+        $apiPath = Slim::container()->get('settings')->get('application.view.path');
         $yamlFile = $apiPath . '/api/documentation.yaml';
 
         return $this->view(
