@@ -5,6 +5,8 @@ use App\Http\Api\Home\Home;
 
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
+use SlimFramework\Middleware\Api\Authentication\AuthenticationApi;
+use SlimFramework\Middleware\Api\Authentication\ProfileAccess\Administrator;
 
 return function (App $app) {
     $app->group('/api', function (RouteCollectorProxy $api) {
