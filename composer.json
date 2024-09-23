@@ -1,4 +1,19 @@
 {
+    "name": "gabrielpcruz/slim",
+    "type": "project",
+    "description": "Skeleton slim framework 4 application (http + cli + oauth2)",
+    "keywords": [
+        "microframework",
+        "framework",
+        "slim"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Cruz",
+            "email": "gabrielpcruz.github@gmail.com"
+        }
+    ],
     "require": {
         "gabrielpcruz/slim-framework": "dev-main"
     },
