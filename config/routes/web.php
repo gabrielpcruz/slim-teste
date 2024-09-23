@@ -3,6 +3,7 @@
 use App\Http\Site\Auth\Login;
 use App\Http\Site\Documentation\Documentation;
 use App\Http\Site\Home\Home;
+use Illuminate\Support\Facades\Auth;
 use Slim\App;
 
 return function (App $app) {
@@ -13,7 +14,7 @@ return function (App $app) {
 
 
     $app->get('/home', [Home::class, 'index']);
-    $app->get('/logged', [Home::class, 'index']);
+    $app->get('/logged', [Home::class, 'index'])->add(Auth::class);
 
 
     $app->get('/login', [Login::class, 'index']);
