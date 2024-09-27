@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Api\Auth\Token;
 use App\Http\Api\Home\Home;
 
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
+use SlimFramework\Http\Api\Auth\Token;
 use SlimFramework\Middleware\Api\Authentication\AuthenticationApi;
 use SlimFramework\Middleware\Api\Authentication\ProfileAccess\Administrator;
 

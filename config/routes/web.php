@@ -1,9 +1,9 @@
 <?php
 
+use Slim\App;
+use App\Http\Site\Home\Home;
 use App\Http\Site\Auth\Login;
 use App\Http\Site\Documentation\Documentation;
-use App\Http\Site\Home\Home;
-use Slim\App;
 use SlimFramework\Middleware\Site\Authentication\AuthenticationSite;
 
 return function (App $app) {
